@@ -1,0 +1,17 @@
+# Alert Service 配置文件示例
+# 请复制此文件为 alert.yml 并填入你的实际配置
+
+Lark:
+  # 飞书自定义机器人webhook地址
+  # 获取方法：飞书群组 -> 设置 -> 群机器人 -> 添加机器人 -> 自定义机器人
+  custom_bot: "https://open.larksuite.com/open-apis/bot/v2/hook/your-webhook-url-here"
+
+# 可选：其他配置
+# Database:
+#   host: "localhost"
+#   port: 5432
+#   name: "alert_db"
+
+# Logging:
+#   level: "info"
+#   format: "json" 

@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  alert-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: alert-service:local
+    container_name: alert-service
+    restart: unless-stopped
+    volumes:
+      # 挂载配置文件
+      - ./config/alert.yml:/opt/xidp/conf/alert.yml:ro
+      # 可选：挂载日志目录
+      # - ./logs:/app/logs
+    environment:
+      - TZ=Asia/Shanghai
+    # 如果需要暴露端口（当前应用不需要）
+    # ports:
+    #   - "8080:8080"
+    networks:
+      - alert-network
+    # 健康检查（可选）
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "alert-service"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    # 资源限制
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: '0.5'
+        reservations:
+          memory: 64M
+          cpus: '0.1'
+
+networks:
+  xidp-network:
+    external: true
+
+# 可选：如果需要数据持久化
+# volumes:
+#   alert-data: 

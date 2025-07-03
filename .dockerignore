@@ -1,0 +1,34 @@
+# Git 相关
+.git
+.gitignore
+.github
+
+# 文档
+README.md
+*.md
+
+# 开发工具
+.vscode
+.idea
+
+# 临时文件
+*.tmp
+*.log
+*.pid
+
+# 构建产物
+alert-service
+*.exe
+
+# Docker 相关
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# 测试文件
+*_test.go
+test/
+
+# 本地配置
+.env
+.env.local 
